@@ -17,8 +17,12 @@ if (stream_position_response.status_code == 401):
 else:
     stream_position = stream_position_response.json()['next_stream_position']
 
-long_poll_address = requests.options('https://api.box.com/2.0/events', headers=auth_header).json()['entries'][0]['url']
-print('realtime url: ' + long_poll_address)
+def get_polling_address():
+    long_poll_address = requests.options('https://api.box.com/2.0/events', headers=auth_header).json()['entries'][0]['url']
+    print('realtime url: ' + long_poll_address)
+    return long_poll_address
+
+long_poll_address = get_polling_address()
 
 while (True):
     print('long polling...')
@@ -27,8 +31,9 @@ while (True):
     message = long_poll.json()['message']
     print(message)
 
-    # Go back to the top and get a new polling address when the long polling address tells us to reconnect.
+    # Get a new polling address when the long polling address tells us to reconnect, and go back to the top to open a new connection to it.
     if (message == 'reconnect'):
+        long_poll_address = get_polling_address()
         continue
 
     print('fetching events')
