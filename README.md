@@ -8,6 +8,9 @@ This script implements the Box User Events Long Polling technique, as outlined i
 - python3: You'll need python 3 installed on your machine to run this project. If you don't have python 3, you can get it [here](https://www.python.org/downloads/release/python-364/).
 - pipenv: This python project uses [pipenv](https://pipenv.readthedocs.io/en/latest/) as its dependency management tool. To install pipenv on your machine, just do `brew install pipenv` (on MacOS), or `pip install pipenv`. See the [installation instructions](https://pipenv.readthedocs.io/en/latest/install/) for additional details.
 
+### Installing dependencies
+In this project directory, run the command `pipenv install`. This will install the python dependencies of this project.
+
 ## Running it
 
 In order to run this script, you'll need a valid Box Developer Token that you can use to programmatically connect to your personal Box account. Developer Tokens are only valid for 60 minutes, so go ahead and create a new one before you run this application. You can find documentation on how to generate a Developer Token here: https://developer.box.com/docs/getting-started-box-integration#section-using-the-box-api. Yours should look something like this: WSWcDy2ebdzGmUpH93bs9kuTGr1hIlxd. Once you have it, run the following command in this directory.
